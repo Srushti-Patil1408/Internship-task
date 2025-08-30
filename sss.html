@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srushti Rajesh Patil - Portfolio</title>
+    <style>
+        /* Feminine Color Theme */
+        :root {
+            --primary: #9c27b0;  /* Purple */
+            --secondary: #e91e63; /* Pink */
+            --light: #fce4ec;    /* Light pink */
+            --dark: #4a148c;     /* Dark purple */
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #fff9fb;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Section */
+        header {
+            background-image: url('/static/img/sp.jpg');
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: var(--dark);
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        section {
+            background: white;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-category {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+        
+        /* Internships Section */
+        .internship-item {
+            background: white;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Resume Section */
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <img src="{{url_for('static',filename='img/Srushti.jpeg')}}" alt="Srushti Rajesh Patil" class="profile-img">
+            <h1>Srushti Rajesh Patil</h1>
+            <p>Computer Science Student | Web Developer</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="{{url_for('static',filename='img/Srushti.jpeg')}}" alt="About Srushti" style="width: 250px; border-radius: 10px;">
+                <div class="about-text">
+                    <p>I am a passionate Computer Science student currently pursuing my Bachelor's degree at Vivekanand College, Kolhapur. With a strong foundation in web development and programming, I enjoy creating beautiful and functional websites.</p>
+                    <p>My academic journey has equipped me with skills in HTML, CSS, JavaScript, Python, and MySQL. I'm particularly interested in front-end development and user experience design.</p>
+                    <p>When I'm not coding, you can find me creating rangoli designs, writing essays, or practicing mehndi art.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript Basics</li>
+                        <li>React Basics</li>
+                        <li>Python Programming</li>
+                        <li>MySQL Database</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Effective Communication</li>
+                        <li>Team Collaboration</li>
+                        <li>Problem Solving</li>
+                        <li>Time Management</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>Git & GitHub</li>
+                        <li>Microsoft Office</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>College Website</h3>
+                        <p><strong>Duration:</strong> 10 days</p>
+                        <p>A responsive website developed during my internship</p>
+                        <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+                        <a href="https://vck-ojt-rtda.vercel.app/" target="_blank" class="project-link">View Live Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships">
+            <h2>Internships</h2>
+            <div class="internship-item">
+                <h3>CodeWonders Tech LLP</h3>
+                <p><strong>Duration:</strong> 10 days</p>
+                <p><strong>Description:</strong> On-the-job training in web development where I created a college website project.</p>
+                <p><strong>Skills Gained:</strong> HTML, CSS, JavaScript, Responsive Design</p>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2>My Resume</h2>
+            <p>Download my complete resume to learn more about my education, skills, and experience.</p>
+            <a href="srushti-resume.pdf" class="download-btn" download="Srushti_Patil_Resume.pdf">
+                Download Resume (PDF)
+            </a>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <h3>Email</h3>
+                        <p>srushtirpatil1408@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+91 7507935542</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🏠</span>
+                    <div>
+                        <h3>Address</h3>
+                        <p>E ward 36 hanuman galli, Temblaiwadi, Kolhapur</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Srushti Rajesh Patil. All rights reserved.</p>
+            <p style="margin-top: 1rem;">Made with ❤️ using HTML & CSS</p>
+        </div>
+    </footer>
+</body>
+</html>

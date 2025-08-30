@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    /* Basic Box Layout */
+    .calculator {
+      width: 200px;
+      margin: 50px auto;
+      border: 1px solid #aaa;
+      padding: 10px;
+    }
+    /* Display Screen */
+    .display {
+      background: #eee;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: right;
+      font-size: 20px;
+    }
+    /* Button Grid */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+    /* Button Style */
+    button {
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+
+  <script>
+    // 1. Display Functions
+    function appendToDisplay(value) {
+      const display = document.getElementById('display');
+      if (display.innerText === '0') {
+        display.innerText = value;
+      } else {
+        display.innerText += value;
+      }
+    }
+
+    // 2. Clear Function
+    function clearDisplay() {
+      document.getElementById('display').innerText = '0';
+    }
+
+    // 3. Calculation Logic
+    function calculate() {
+      try {
+        const result = eval(document.getElementById('display').innerText);
+        document.getElementById('display').innerText = result;
+      } catch {
+        alert("Invalid Calculation");
+        clearDisplay();
+      }
+    }
+  </script>
+</body>
+</html>
